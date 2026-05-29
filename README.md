@@ -186,7 +186,9 @@ That's it! The app will load the pre-trained model and vectorizer automatically 
 
 ## 📸 Screenshots
 
-<img width="2403" height="1133" alt="image" src="https://github.com/user-attachments/assets/cee4308b-f494-4bda-b6a3-c6c536df9945" />
+<img width="2875" height="1466" alt="image" src="https://github.com/user-attachments/assets/0fbd9ea6-30d5-4702-bdd1-8f6a01982a7a" />
+<img width="2878" height="1464" alt="image" src="https://github.com/user-attachments/assets/2eb3d1bb-2013-40a1-9033-2950037f623d" />
+
 
 
 ---
