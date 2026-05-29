@@ -125,6 +125,7 @@ You only need two things to run the app:
 
 1. Download the `model/` folder and `app.py`
 2. Place them together in the same directory like this:
+3. Open Terminal and run command given below
 
 ```
 your-folder/
