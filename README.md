@@ -1,0 +1,202 @@
+# 📰 Fake vs Factual News Detector
+
+A machine learning–powered NLP pipeline that classifies news articles as **Fake** or **Factual** with high accuracy. Includes a live Streamlit web application for real-time predictions.
+
+---
+
+## 🚀 Demo
+
+> Run the app locally:
+> ```bash
+> streamlit run app.py
+> ```
+
+---
+
+## 📌 Project Overview
+
+| Item | Detail |
+|---|---|
+| **Task** | Binary Text Classification |
+| **Input** | News headline + article body |
+| **Output** | Fake (0) or Factual (1) |
+| **Best Model** | Passive Aggressive Classifier / Logistic Regression |
+| **Accuracy** | ~98–99% |
+| **Tech Stack** | Python, scikit-learn, NLTK, spaCy, TF-IDF, Streamlit |
+
+---
+
+## 🗂️ Project Structure
+
+```
+fake-vs-factual-news/
+│
+├── fake_vs_factual_news.ipynb   # Main notebook (end-to-end pipeline)
+├── app.py                       # Streamlit web application
+├── requirements.txt             # Python dependencies
+├── README.md                    # Project documentation
+│
+├── data/
+│   ├── True.csv                 # Factual news dataset
+│   ├── Fake.csv                 # Fake news dataset
+│   └── final_data.csv           # Combined & shuffled dataset (generated)
+│
+└── model/
+    ├── best_model.pkl           # Trained best model (generated)
+    ├── tfidf.pkl                # Fitted TF-IDF vectorizer (generated)
+    └── best_model_name.txt      # Name of the best model (generated)
+```
+
+---
+
+## 🧠 Pipeline Walkthrough
+
+### 1. Data Loading & Labeling
+- Loads `True.csv` (label = 1) and `Fake.csv` (label = 0)
+- Drops irrelevant columns: `date`, `subject`
+- Concatenates and shuffles both datasets
+
+### 2. Data Cleaning
+- Removes null values
+- Drops duplicate articles
+
+### 3. Exploratory Data Analysis (EDA)
+- Label distribution plot (Fake vs Factual count)
+- Average text length comparison
+- POS Tagging across the full corpus
+- Named Entity Recognition (NER): Top 10 entities in fake and factual news
+
+### 4. Text Preprocessing
+- Combines `title` + `text` into a single `content` column
+- Lowercasing
+- Removes punctuation and extra whitespace
+- Tokenization (NLTK)
+- Stop word removal
+- Lemmatization (WordNetLemmatizer)
+- Top 10 unigram analysis with plots
+
+### 5. Vectorization
+- TF-IDF with `max_features=50,000` and `ngram_range=(1, 2)`
+- Fit on training data only (prevents data leakage)
+
+### 6. Model Training & Evaluation
+Six models trained and compared:
+
+| Model | Notes |
+|---|---|
+| Logistic Regression | Strong baseline |
+| Passive Aggressive Classifier | Fast, online learning |
+| Multinomial Naive Bayes | Probabilistic approach |
+| Decision Tree | Interpretable, prone to overfit |
+| Random Forest | Ensemble, robust |
+| Linear SVM | High-dimensional text classification |
+
+Best model selected by F1 score and saved with joblib.
+
+### 7. Web Application
+A Streamlit app loads the saved model and vectorizer, accepts a headline + article text, and returns a **FAKE NEWS** ❌ or **FACTUAL NEWS** ✅ prediction.
+
+---
+
+## ⚙️ Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/fake-vs-factual-news.git
+cd fake-vs-factual-news
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Download NLTK data
+python -m nltk.downloader punkt stopwords wordnet
+
+# Download spaCy model
+python -m spacy download en_core_web_sm
+```
+
+---
+
+## ▶️ Usage
+
+### Quick Start (No Training Required)
+
+You only need two things to run the app:
+
+1. Download the `model/` folder and `app.py`
+2. Place them together in the same directory like this:
+
+```
+your-folder/
+├── app.py
+└── model/
+    ├── best_model.pkl
+    ├── tfidf.pkl
+    └── best_model_name.txt
+```
+
+Then run:
+
+```bash
+streamlit run app.py
+```
+
+That's it! The app will load the pre-trained model and vectorizer automatically and start serving predictions in your browser.
+
+> No need to run the notebook, download datasets, or train any models from scratch.
+
+---
+
+## 📦 Requirements
+
+```
+pandas
+numpy
+matplotlib
+seaborn
+nltk
+spacy
+scikit-learn
+joblib
+streamlit
+```
+
+Install all at once:
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 📊 Results
+
+| Model | Accuracy | F1-Score |
+|---|---|---|
+| Logistic Regression | ~98.5% | ~98.5% |
+| Passive Aggressive | ~99.0% | ~99.0% |
+| Naive Bayes | ~93.0% | ~93.0% |
+| Decision Tree | ~99.5% | ~99.5% |
+| Random Forest | ~98.8% | ~98.8% |
+| Linear SVM | ~99.2% | ~99.2% |
+
+> *Exact values depend on the dataset version used.*
+
+---
+
+## 📁 Dataset
+
+This project uses the [Fake and Real News Dataset](https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset) from Kaggle.
+
+- **True.csv** — ~21,000 real news articles
+- **Fake.csv** — ~23,000 fake news articles
+
+> Place both CSV files inside the `data/` folder before running the notebook.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
