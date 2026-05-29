@@ -154,18 +154,31 @@ python -m spacy download en_core_web_sm
 ---
 
 ## ▶️ How to Run
+### Quick Start (No Training Required)
 
-### Option A — Run the notebook (full training)
-```bash
-jupyter notebook fake_vs_factual_news.ipynb
+You only need two things to run the app:
+
+1. Download the `model/` folder and `app.py`
+2. Place them together in the same directory like this:
+
 ```
-Place `True.csv` and `Fake.csv` inside the `data/` folder first. Running all cells trains and saves the model automatically.
+your-folder/
+├── app.py
+└── model/
+    ├── best_model.pkl
+    ├── tfidf.pkl
+    └── best_model_name.txt
+```
 
-### Option B — Launch the app directly (pre-trained model)
+Then run:
+
 ```bash
 streamlit run app.py
 ```
-The `model/` folder already contains the saved model — no training needed.
+
+That's it! The app will load the pre-trained model and vectorizer automatically and start serving predictions in your browser.
+
+> No need to run the notebook, download datasets, or train any models from scratch.
 
 ---
 
