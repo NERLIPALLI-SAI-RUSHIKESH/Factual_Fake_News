@@ -211,11 +211,6 @@ That's it! The app will load the pre-trained model and vectorizer automatically 
 
 ---
 
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
 
 ## 🙋‍♂️ Author
 
