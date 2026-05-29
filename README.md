@@ -179,15 +179,15 @@ streamlit run app.py
 That's it! The app will load the pre-trained model and vectorizer automatically and start serving predictions in your browser.
 
 > No need to run the notebook, download datasets, or train any models from scratch.
+> <img width="2403" height="1133" alt="image" src="https://github.com/user-attachments/assets/602842c5-105b-4dc4-ad2f-ade8e3c22bec" />
+
 
 ---
 
 ## 📸 Screenshots
 
-<!-- Add a screenshot of your Streamlit app here -->
-<!-- Example: ![App Screenshot](screenshots/app_demo.png) -->
+<img width="2403" height="1133" alt="image" src="https://github.com/user-attachments/assets/cee4308b-f494-4bda-b6a3-c6c536df9945" />
 
-> **How to add:** Run the Streamlit app → take a screenshot → save it as `screenshots/app_demo.png` → push to GitHub.
 
 ---
 
